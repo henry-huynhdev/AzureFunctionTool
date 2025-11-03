@@ -45,6 +45,8 @@ class Program
             Console.WriteLine("\n========================================");
             Console.WriteLine("Please update appsettings.json with the required values.");
             Console.ResetColor();
+            Console.Write("\nPress Enter to exit...");
+            Console.ReadLine();
             return;
         }
         
@@ -103,6 +105,8 @@ class Program
             if (listStatusToCleanup.Count == 0)
             {
                 Console.WriteLine("\nNo valid statuses selected. Exiting...");
+                Console.Write("\nPress Enter to exit...");
+                Console.ReadLine();
                 return;
             }
 
@@ -122,6 +126,8 @@ class Program
             if (confirmation != "yes" && confirmation != "y")
             {
                 Console.WriteLine("\nCleanup cancelled.");
+                Console.Write("\nPress Enter to exit...");
+                Console.ReadLine();
                 return;
             }
 
@@ -136,6 +142,9 @@ class Program
         Console.WriteLine("\n========================================");
         Console.WriteLine("Processing completed!");
         Console.WriteLine("========================================");
+        
+        Console.Write("\nPress Enter to exit...");
+        Console.ReadLine();
 
         #endregion
     }
