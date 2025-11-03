@@ -49,6 +49,7 @@ public static class AzureFunctionAppInstanceService
 
         // Parse response
         var responseBody = await response.Content.ReadAsStringAsync();
+        Console.WriteLine(responseBody);
         var instanceStatus = Newtonsoft.Json.JsonConvert.DeserializeObject<InstanceStatusOutDto>(responseBody);
 
         return instanceStatus?.RuntimeStatus ?? throw new InvalidOperationException();

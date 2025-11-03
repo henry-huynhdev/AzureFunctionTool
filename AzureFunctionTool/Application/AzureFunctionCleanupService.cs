@@ -48,26 +48,12 @@ public class AzureFunctionCleanupService
 
         foreach (var instance in listInstances)
         {
-            Console.WriteLine($"InstanceId: {instance}");
-            // Get instance status
-            var status = await AzureFunctionAppInstanceService.GetInstanceStatus(
+            await AzureFunctionAppInstanceService.PurgeHistoryDelete(
                 _config.GrUrl,
                 _config.AppName,
                 _config.AppCode,
-                accessToken, 
+                accessToken,
                 instance);
-            Console.WriteLine($"Status: {status}");
-
-
-            if (instanceStatuses.Contains(status))
-            {
-                await AzureFunctionAppInstanceService.PurgeHistoryDelete(
-                    _config.GrUrl,
-                    _config.AppName,
-                    _config.AppCode,
-                    accessToken,
-                    instance);
-            }
         }
     }
 

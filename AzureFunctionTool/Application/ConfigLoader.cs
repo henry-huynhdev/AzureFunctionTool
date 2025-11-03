@@ -4,15 +4,15 @@ namespace TerminateGRInstance.Application;
 
 public class EnvConfig
 {
-    public required string TokenUrl { get; set; }
-    public required string ClientId { get; set; }
-    public required string ClientSecret { get; set; }
-    public required string Scope { get; set; }
-    public required string GrUrl { get; set; }
-    public required string AppName { get; set; }
-    public required string AppCode { get; set; }
-    public required string StorageConnectionString { get; set; }
-    public required string TableName { get; set; }
+    public string TokenUrl { get; set; }
+    public string ClientId { get; set; }
+    public string ClientSecret { get; set; }
+    public string Scope { get; set; }
+    public string GrUrl { get; set; }
+    public string AppName { get; set; }
+    public string AppCode { get; set; }
+    public string StorageConnectionString { get; set; }
+    public string TableName { get; set; }
 }
 
 public static class ConfigLoader
