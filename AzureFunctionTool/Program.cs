@@ -1,4 +1,4 @@
-﻿﻿using TerminateGRInstance.Application;
+﻿using TerminateGRInstance.Application;
 using TerminateGRInstance.Enum;
 
 class Program
