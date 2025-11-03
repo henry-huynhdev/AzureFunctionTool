@@ -9,6 +9,45 @@ class Program
 
         // Load configuration from appsettings.json
         var envConfig = ConfigLoader.LoadEnvConfig("appsettings.json");
+        
+        // Validate configuration
+        var validationErrors = new List<string>();
+        
+        if (string.IsNullOrWhiteSpace(envConfig.TokenUrl))
+            validationErrors.Add("TokenUrl is missing or empty");
+        if (string.IsNullOrWhiteSpace(envConfig.ClientId))
+            validationErrors.Add("ClientId is missing or empty");
+        if (string.IsNullOrWhiteSpace(envConfig.ClientSecret))
+            validationErrors.Add("ClientSecret is missing or empty");
+        if (string.IsNullOrWhiteSpace(envConfig.Scope))
+            validationErrors.Add("Scope is missing or empty");
+        if (string.IsNullOrWhiteSpace(envConfig.GrUrl))
+            validationErrors.Add("GrUrl is missing or empty");
+        if (string.IsNullOrWhiteSpace(envConfig.AppName))
+            validationErrors.Add("AppName is missing or empty");
+        if (string.IsNullOrWhiteSpace(envConfig.AppCode))
+            validationErrors.Add("AppCode is missing or empty");
+        if (string.IsNullOrWhiteSpace(envConfig.StorageConnectionString))
+            validationErrors.Add("StorageConnectionString is missing or empty");
+        if (string.IsNullOrWhiteSpace(envConfig.TableName))
+            validationErrors.Add("TableName is missing or empty");
+        
+        if (validationErrors.Any())
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("❌ Configuration Error!");
+            Console.WriteLine("========================================");
+            Console.WriteLine("The following configuration values are missing or empty in appsettings.json:\n");
+            foreach (var error in validationErrors)
+            {
+                Console.WriteLine($"  • {error}");
+            }
+            Console.WriteLine("\n========================================");
+            Console.WriteLine("Please update appsettings.json with the required values.");
+            Console.ResetColor();
+            return;
+        }
+        
         var cleanupService = new AzureFunctionCleanupService(envConfig);
 
         #endregion
